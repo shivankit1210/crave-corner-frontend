@@ -55,7 +55,7 @@ const updateStatus = async (id, status, setOrders) => {
       }
     );
     alert(`Order marked as ${status}!`);
-    const response = await axios.get("https://restaurantadmin.onrender.com/api/orders", {
+    const response = await axios.get("https://restaurantadmin.onrender.com/api/orders/all", {
       headers: {
         Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
       },
@@ -72,13 +72,13 @@ const deleteOrder = async (id, setOrders) => {
     window.confirm("Are you sure you want to complete and delete this order?")
   ) {
     try {
-      await axios.delete(`https://restaurantadmin.onrender.com/api/orders/${id}`, {
+      await axios.delete(`https://restaurantadmin.onrender.com/api/orders/delete-order/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
         },
       });
       alert("Order deleted successfully!");
-      const response = await axios.get("https://restaurantadmin.onrender.com/api/orders", {
+      const response = await axios.get("https://restaurantadmin.onrender.com/api/orders/all", {
         headers: {
           Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
         },
@@ -107,7 +107,7 @@ const AdminPanel = () => {
           console.error("No token found. User is not authenticated.");
           return;
         }
-        const response = await axios.get("https://restaurantadmin.onrender.com/api/orders", {
+        const response = await axios.get("https://restaurantadmin.onrender.com/api/orders/all", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

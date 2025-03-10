@@ -78,8 +78,7 @@ const Breakfast = () => {
 
       const token = localStorage.getItem("adminToken");
 
-      // const response = await axios.post("http://localhost:5137/api/orders", orderData, {
-      const response = await axios.post("https://restaurantadmin.onrender.com/api/orders", orderData, {
+      const response = await axios.post("https://restaurantadmin.onrender.com/api/orders/add-order", orderData, {
         headers: {
           Authorization: `Bearer ${token}` // Pass the token in the Authorization header
         }
